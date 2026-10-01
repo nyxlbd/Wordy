@@ -1,0 +1,14 @@
+com\wordy\admin\AdminDashboard$2.class
+com\wordy\admin\ManagePlayersUI.class
+com\wordy\admin\service\AdminServiceClient$PlayerData.class
+com\wordy\admin\AdminApp.class
+com\wordy\admin\AdminDashboard$4.class
+com\wordy\admin\AdminDashboard$3.class
+com\wordy\admin\service\AdminServiceClient.class
+com\wordy\admin\AdminDashboard.class
+com\wordy\admin\AdminEditAccountUI.class
+com\wordy\admin\service\GrpcConnectionManager.class
+com\wordy\admin\AdminGameSettingsUI.class
+com\wordy\admin\AdminDashboard$1.class
+com\wordy\admin\service\AdminServiceClient$GameSettings.class
+com\wordy\admin\AdminEditAccountUI$1.class

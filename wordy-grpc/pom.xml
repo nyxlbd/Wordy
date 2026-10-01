@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.wordy</groupId>
+  <artifactId>wordy-grpc</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <!-- THIS IS CRITICAL -->
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>proto</module>
+    <module>common</module>
+    <module>server</module>
+    <module>player</module>
+    <module>admin</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>17</java.version>
+    <grpc.version>1.63.0</grpc.version>
+    <protobuf.version>3.25.3</protobuf.version>
+  </properties>
+
+</project>

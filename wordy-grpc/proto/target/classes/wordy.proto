@@ -1,0 +1,151 @@
+syntax = "proto3";
+
+package wordy;
+
+option java_package = "com.wordy.proto";
+option java_multiple_files = true;
+
+// Common Messages
+
+message Empty {}
+
+message Status {
+  bool success = 1;
+  string message = 2;
+}
+
+// Authentication
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+  bool isAdmin = 3;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  string userRole = 3;
+}
+
+message LogoutRequest {
+  string username = 1;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service AuthService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+}
+
+// Game
+
+message JoinGameRequest {
+  string username = 1;
+}
+
+message JoinGameResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GameRequest {
+  string username = 1;
+}
+
+message WordRequest {
+  string username = 1;
+  string word = 2;
+}
+
+message WordResponse {
+  bool valid = 1;
+  string message = 2;
+}
+
+message GameUpdate {
+  string type = 1;
+  // WAITING, START, ROUND, RESULT, GAME_OVER
+
+  string message = 2;
+
+  string letters = 3;
+
+  string winner = 4;
+
+  int32 roundNumber = 5;
+
+  int32 roundDuration = 6; // seconds - duration for this round
+}
+
+service GameService {
+  rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
+
+  // Client sends words while game is ongoing
+  rpc SubmitWord(WordRequest) returns (WordResponse);
+
+  // Server streams game updates to client
+  rpc StreamGame(GameRequest) returns (stream GameUpdate);
+}
+
+// Leaderboard
+
+message PlayerStats {
+  string username = 1;
+  int32 wins = 2;
+}
+
+message WordRecord {
+  string username = 1;
+  string word = 2;
+  int32 length = 3;
+}
+
+message LeaderboardResponse {
+  repeated PlayerStats topPlayers = 1;
+  repeated WordRecord longestWords = 2;
+}
+
+service LeaderboardService {
+  rpc GetLeaderboard(Empty) returns (LeaderboardResponse);
+}
+
+// Admin
+
+message Player {
+  int32 id = 1;
+  string username = 2;
+  string password = 3;
+  int32 wins = 4;
+}
+
+message PlayerId {
+  int32 id = 1;
+}
+
+message SearchQuery {
+  string keyword = 1;
+}
+
+message PlayerList {
+  repeated Player players = 1;
+}
+
+message Config {
+  int32 waitTime = 1;      // seconds (default 10)
+  int32 roundDuration = 2; // seconds (default 30)
+}
+
+service AdminService {
+  rpc CreatePlayer(Player) returns (Status);
+  rpc UpdatePlayer(Player) returns (Status);
+  rpc DeletePlayer(PlayerId) returns (Status);
+  rpc SearchPlayer(SearchQuery) returns (PlayerList);
+
+  rpc UpdateConfig(Config) returns (Status);
+  rpc GetConfig(Empty) returns (Config);
+}

@@ -1,0 +1,16 @@
+com\wordy\server\dao\ConfigDAO.class
+com\wordy\server\util\WordValidator.class
+com\wordy\server\dao\WordDAO.class
+com\wordy\server\WordyServer.class
+com\wordy\server\service\GameManager.class
+com\wordy\server\db\DBConnection.class
+com\wordy\server\service\AuthServiceImpl.class
+com\wordy\server\dao\UserDAO.class
+com\wordy\server\service\AdminServiceImpl.class
+com\wordy\server\TestDB.class
+com\wordy\server\util\LetterGenerator.class
+com\wordy\server\util\WordValidator$ValidationResult.class
+com\wordy\server\dao\GameResultDAO.class
+com\wordy\server\service\LeaderboardServiceImpl.class
+com\wordy\server\model\GameSession.class
+com\wordy\server\service\GameServiceImpl.class
